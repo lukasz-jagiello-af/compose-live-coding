@@ -1,5 +1,5 @@
 ## Branches:
 
-- https://github.com/lukasz-jagiello-af/compose-live-coding/tree/1-constraints
-
-- https://github.com/lukasz-jagiello-af/compose-live-coding/tree/2-custom-layout
+1. Constraints: https://github.com/lukasz-jagiello-af/compose-live-coding/tree/1-constraints
+2. Custom Layout https://github.com/lukasz-jagiello-af/compose-live-coding/tree/2-custom-layout
+3. Custom Subcompose Layout https://github.com/lukasz-jagiello-af/compose-live-coding/tree/3-subcompose-layout
