@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -38,7 +39,6 @@ fun Modifier.printSizes(tag: String = ""): Modifier {
     }
 }
 
-
 @Composable
 fun GenerateHeader(amount: Int = 5, equalSize: Boolean = true) = repeat(amount) { index ->
     val size = if (equalSize) 80.dp else Random.nextInt(20, 80).dp
@@ -48,6 +48,7 @@ fun GenerateHeader(amount: Int = 5, equalSize: Boolean = true) = repeat(amount) 
         .height(size / 2)
         .wrapContentSize()
     Box {
+        LaunchedEffect(Unit) { println("§ LaunchedEffect Header index $index , size $size") }
         Text(modifier = modifier, text = "Header: $index")
     }
 }
@@ -60,6 +61,7 @@ fun GenerateContent(amount: Int = 5, equalSize: Boolean = true) = repeat(amount)
         .size(size)
         .wrapContentSize()
     Box {
+        LaunchedEffect(Unit) { println("§ LaunchedEffect Content index $index , size $size") }
         Text(modifier = modifier, text = "$index")
     }
 }
