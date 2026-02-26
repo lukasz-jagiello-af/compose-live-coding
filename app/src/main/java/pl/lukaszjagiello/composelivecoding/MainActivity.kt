@@ -3,8 +3,6 @@ package pl.lukaszjagiello.composelivecoding
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DropdownMenuItem
@@ -23,11 +21,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import pl.lukaszjagiello.composelivecoding.screens.subcomposelayout.BoxWithConstraintsScreen
-import pl.lukaszjagiello.composelivecoding.screens.subcomposelayout.DefferedCompositionScreen
-import pl.lukaszjagiello.composelivecoding.screens.subcomposelayout.DifferenceScreen
-import pl.lukaszjagiello.composelivecoding.screens.subcomposelayout.MultipleContentsComparisionScreen
-import pl.lukaszjagiello.composelivecoding.screens.subcomposelayout.SingleSubcomposeLayoutScreen
+import pl.lukaszjagiello.composelivecoding.screens.custommodifier.AfterModifiersScreen
+import pl.lukaszjagiello.composelivecoding.screens.custommodifier.BeforeModifiersScreen
 import pl.lukaszjagiello.composelivecoding.theme.ComposeLiveCodingTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,19 +30,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeLiveCodingTheme {
-                Scaffold { innerPadding ->
-                    Box(modifier = Modifier.padding(innerPadding)) {
-                        MainWithBottomTabs()
-                    }
-                }
+                MainWithBottomTabs()
             }
         }
     }
 }
 
 private val tabs = listOf(
-    "Single Content", "Multiple Contents", "Difference",
-    "Deffered Content", "BoxWithConstraints"
+    "BeforeModifiersScreen", "AfterModifiersScreen",
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -91,19 +81,11 @@ private fun MainWithBottomTabs() {
             }
         }
     ) { innerPadding ->
-        Box(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-        ) {
-            when (selectedIndex) {
-                0 -> SingleSubcomposeLayoutScreen()
-                1 -> MultipleContentsComparisionScreen()
-                2 -> DifferenceScreen()
-                3 -> DefferedCompositionScreen()
-                4 -> BoxWithConstraintsScreen()
-                else -> {}
-            }
+        val modifier = Modifier.padding(innerPadding)
+        when (selectedIndex) {
+            0 -> BeforeModifiersScreen(modifier)
+            1 -> AfterModifiersScreen(modifier)
+            else -> {}
         }
     }
 }
