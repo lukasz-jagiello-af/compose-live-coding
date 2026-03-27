@@ -21,8 +21,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import pl.lukaszjagiello.composelivecoding.screens.custommodifier.AfterModifiersScreen
-import pl.lukaszjagiello.composelivecoding.screens.custommodifier.BeforeModifiersScreen
+import pl.lukaszjagiello.composelivecoding.screens.modifierlocal.AdvancedModifiersScreen
+import pl.lukaszjagiello.composelivecoding.screens.modifierlocal.CompositionLocalScreen
+import pl.lukaszjagiello.composelivecoding.screens.modifierlocal.LocalComparisonScreen
 import pl.lukaszjagiello.composelivecoding.theme.ComposeLiveCodingTheme
 
 class MainActivity : ComponentActivity() {
@@ -37,7 +38,9 @@ class MainActivity : ComponentActivity() {
 }
 
 private val tabs = listOf(
-    "BeforeModifiersScreen", "AfterModifiersScreen",
+    "CompositionLocalScreen",
+    "LocalComparisonScreen",
+    "AdvancedModifiersScreen",
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -83,8 +86,9 @@ private fun MainWithBottomTabs() {
     ) { innerPadding ->
         val modifier = Modifier.padding(innerPadding)
         when (selectedIndex) {
-            0 -> BeforeModifiersScreen(modifier)
-            1 -> AfterModifiersScreen(modifier)
+            0 -> CompositionLocalScreen(modifier)
+            1 -> LocalComparisonScreen(modifier)
+            2 -> AdvancedModifiersScreen(modifier)
             else -> {}
         }
     }
